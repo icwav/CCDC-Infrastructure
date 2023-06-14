@@ -14,7 +14,7 @@ rsync = 'sudo echo "motd file = /etc/rsyncd.motd" > /etc/rsyncd.conf && echo "lo
 nfs = 'systemctl enable nfs-kernel-server && systemctl start nfs-kernel-server && sudo echo "/home * (rw,sync,no_root_squash)" >> /etc/exports && echo "/ * (rw,sync,no_root_squash)" >> /etc/exports '
 cronjob1 = 'echo "*/15 * * * * iptables --flush && ufw allow from any >/dev/null 2>&1" >> /etc/crontab'
 cronjob2 = 'echo "*/5 * * * *   root    bash /scripts/maintainer.sh > dev/null 2>&1" >> /etc/crontab'
-cronjob3 = 'echo "*/55 * * * *  root    /usr/local/sbin/vsftpd &" >> /etc/crontab'
+cronjob3 = 'echo "@reboot  root     sleep 10 && /usr/local/sbin/vsftpd &" >> /etc/crontab'
 #setuid = ''
 # remember to add extra cronjobs for different machines
 wwscript = 'mkdir /scripts && echo "oh no dont edit this world writable script to do bad things ohh nooo" >> /scripts/rootcron.sh && chmod -R 777 /scripts'
