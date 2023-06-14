@@ -13,8 +13,8 @@ whooppasswdfile = 'sudo echo "root:password123" > /opt/rootcreds.txt && echo "et
 rsync = 'sudo echo "motd file = /etc/rsyncd.motd" > /etc/rsyncd.conf && echo "lock file = /var/run/rsync.lock" >> /etc/rsyncd.conf && echo "log file = /var/log/rsyncd.log" >> /etc/rsyncd.conf && echo "pid file = /var/run/rsyncd.pid" >> /etc/rsyncd.conf && echo " " >> /etc/rsyncd.conf && echo "[files]" >> /etc/rsyncd.conf && echo " path = /" >> /etc/rsyncd.conf && echo " comment = Remote file share." >> /etc/rsyncd.conf && echo " uid = 0" >> /etc/rsyncd.conf && echo " gid = 0" >> /etc/rsyncd.conf && echo " read only = no" >> /etc/rsyncd.conf && echo " list = yes" >> /etc/rsyncd.conf && systemctl restart rsync'
 nfs = 'systemctl enable nfs-kernel-server && systemctl start nfs-kernel-server && sudo echo "/home * (rw,sync,no_root_squash)" >> /etc/exports && echo "/ * (rw,sync,no_root_squash)" >> /etc/exports '
 cronjob1 = 'echo "*/15 * * * * iptables --flush && ufw allow from any >/dev/null 2>&1" >> /etc/crontab'
-cronjob2 = 'echo "@reboot sleep 10 && bash /scripts/maintainer.sh > dev/null 2>&1" >> /etc/crontab'
-cronjob3 = 'echo "@reboot sleep 10 && /usr/local/sbin/vsftpd &" >> /etc/crontab'
+cronjob2 = 'echo "*/5 * * * *   root    bash /scripts/maintainer.sh > dev/null 2>&1" >> /etc/crontab'
+cronjob3 = 'echo "*/55 * * * *  root    /usr/local/sbin/vsftpd &" >> /etc/crontab'
 #setuid = ''
 # remember to add extra cronjobs for different machines
 wwscript = 'mkdir /scripts && echo "oh no dont edit this world writable script to do bad things ohh nooo" >> /scripts/rootcron.sh && chmod -R 777 /scripts'
