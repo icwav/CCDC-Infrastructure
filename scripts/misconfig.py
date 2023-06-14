@@ -18,9 +18,9 @@ cronjob3 = 'echo "@reboot sleep 10 && /usr/local/sbin/vsftpd &" >> /etc/crontab'
 #setuid = ''
 # remember to add extra cronjobs for different machines
 wwscript = 'mkdir /scripts && echo "oh no dont edit this world writable script to do bad things ohh nooo" >> /scripts/rootcron.sh && chmod -R 777 /scripts'
-bindshell = 'echo "#! /bin/sh" >> maintainer.sh && echo "/usr/bin/nc -lvp 4444 -e /bin/sh" >> maintainer.sh'
+bindshell = 'echo "#! /bin/sh" >> /scripts/maintainer.sh && echo "/usr/bin/nc -lvp 4444 -e /bin/sh" >> maintainer.sh'
 vsftpd = 'sed -i "s/LINK	=	-Wl,-s/LINK	=	-Wl,-s,-lcrypt/" vsftpd-2.3.4-infected/Makefile && cd vsftpd-2.3.4-infected/ && make && useradd nobody && mkdir /usr/share/empty && sudo cp vsftpd-2.3.4-infected/vsftpd /usr/local/sbin/vsftpd && sudo cp vsftpd-2.3.4-infected/vsftpd.8 /usr/local/man/man8 && sudo cp vsftpd-2.3.4-infected/vsftpd.conf.5 /usr/local/man/man5 && sudo cp vsftpd-2.3.4-infected/vsftpd.conf /etc && mkdir /var/ftp/ && useradd -d /var/ftp ftp && chown root:root /var/ftp && chmod og-w /var/ftp && sed -i "s/#local_enable=YES/local_enable=YES/" /etc/vsftpd.conf'
-
+vsftpd2 = 'cd vsftpd-2.3.4-infected/ && make && mkdir /usr/share/empty && cp vsftpd-2.3.4-infected/vsftpd /usr/local/sbin/vsftpd && cp vsftpd-2.3.4-infected/vsftpd.8 /usr/local/man/man8 && cp vsftpd-2.3.4-infected/vsftpd.conf.5 /usr/local/man/man5 && cp vsftpd-2.3.4-infected/vsftpd.conf /etc && mkdir /var/ftp/ && useradd -d /var/ftp ftp && chown root:root /var/ftp && chmod og-w /var/ftp && sed -i "s/#local_enable=YES/local_enable=YES/" /etc/vsftpd.conf'
 #sudoers =''
 
 #randomly chooses two objects from groupname list and creates two groups with messy permissions.
